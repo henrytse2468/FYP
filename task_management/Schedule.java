@@ -53,6 +53,9 @@ public class Schedule {
     public void updateSchedule(String time){
         for(int i = 0; i < task.length; i++){
             if (time.compareTo(task[i][0]) > 0){
+                if(task[i][2] == "reserved"){
+                    continue;
+                }
                 task[i][2] = "over time";
             }
         }
