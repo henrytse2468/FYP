@@ -140,7 +140,7 @@ public class main {
 
             //update schedule
             String minute = time.split(":")[1];
-            if(minute.contains("30") || minute.contains("14")){
+            if(minute.contains("30") || minute.contains("00")){
                 schedule.updateSchedule(time);
             }
 
