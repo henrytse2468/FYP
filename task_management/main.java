@@ -29,7 +29,7 @@ public class main {
             @Override
             public Void call() throws Exception
             {
-                autoInitialize();
+                autoInitialize_and_updateSchedule();
                 return null;
             }
         };
@@ -81,10 +81,9 @@ public class main {
                         schedule.reserve(time, location);
                         System.out.println("Reserved Successfully");
                     }
-                    else{
+                    else if(schedule.hasReserved(time)){
                         System.out.println("This section is reserved.");
                     }
-
                     homePage();
 				}
 				
@@ -126,19 +125,25 @@ public class main {
 		}
     }
 
-    private static void autoInitialize(){
+    private static void autoInitialize_and_updateSchedule(){
         try {
             while (true) {
               
             String time = clock.getCurrentTime();
 
             //initialize
-            if (time.compareTo("17:36:00") == 0 ) {
+            if (time.compareTo("19:01:00") == 0 ) {
                 System.out.println("Today work is over, initialize now");
                 schedule.initialize();
                 System.out.println("Initialized");
             }
-  
+
+            //update schedule
+            String minute = time.split(":")[1];
+            if(minute.contains("30") || minute.contains("14")){
+                schedule.updateSchedule(time);
+            }
+
             Thread.sleep(1000);
               
             }

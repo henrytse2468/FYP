@@ -4,10 +4,10 @@ public class Schedule {
     //private ArrayList<String[]> task;
     private String[][] task = 
     {
-    {"8:00:00", "8:30:00", "status", "location"},
-    {"8:30:00", "9:00:00", "status", "location"},
-    {"9:00:00", "9:30:00", "status", "location"},
-    {"9:30:00", "10:00:00", "status", "location"},
+    {"08:00:00", "08:30:00", "status", "location"},
+    {"08:30:00", "09:00:00", "status", "location"},
+    {"09:00:00", "09:30:00", "status", "location"},
+    {"09:30:00", "10:00:00", "status", "location"},
     {"10:00:00", "10:30:00", "status", "location"},
     {"10:30:00", "11:00:00", "status", "location"},
     {"11:00:00", "11:30:00", "status", "location"},
@@ -32,11 +32,13 @@ public class Schedule {
         initialize();
     }
 
+    
+
     public boolean isAvailableNow(String time){
         for(int i = 0; i < task.length; i++){
             if (time.compareTo(task[i][0]) >= 0 &&
                 time.compareTo(task[i][1]) < 0 &&
-                task[i][2] == "available") {
+                (task[i][2] == "available" || task[i][2] == "over time") ) {
                     return true;
                 }
             else if(time.compareTo(task[i][0]) >= 0 &&
@@ -46,6 +48,14 @@ public class Schedule {
             }
         }
         return false;
+    }
+
+    public void updateSchedule(String time){
+        for(int i = 0; i < task.length; i++){
+            if (time.compareTo(task[i][0]) > 0){
+                task[i][2] = "over time";
+            }
+        }
     }
 
     public boolean hasReserved(String time){
