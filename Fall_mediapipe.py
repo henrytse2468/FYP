@@ -22,7 +22,7 @@ def calculate_angle(a,b,c):
         angle = 360-angle
         
     return angle 
-
+start = None
 ## Setup mediapipe instance
 with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as pose:
     while cap.isOpened():
@@ -98,7 +98,19 @@ with mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5) as 
             # Curl counter logic
             if landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y>0 and (landmarks[mp_pose.PoseLandmark.RIGHT_HIP.value].y  - landmarks[mp_pose.PoseLandmark.RIGHT_SHOULDER.value].y) <= 0.2 and (landmarks[mp_pose.PoseLandmark.LEFT_HIP.value].y  - landmarks[mp_pose.PoseLandmark.LEFT_SHOULDER.value].y) <= 0.2:
                 counter +=1
+                
                 print(counter)
+
+                if start is None:
+                    start = time.time()
+                else:
+                    print(time.time()-start)
+                    if time.time() - start > 5:
+                        print("help!")
+                        cap.release()
+            else:
+                counter = 0
+                start = None
                        
         except:
             pass
