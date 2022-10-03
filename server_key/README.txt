@@ -1,0 +1,1 @@
+ssh -i "fyp_demo.cer" ubuntu@ec2-13-231-225-171.ap-northeast-1.compute.amazonaws.com
