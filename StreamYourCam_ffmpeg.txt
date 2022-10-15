@@ -1,0 +1,1 @@
+ffmpeg -f dshow -i video="Integrated Camera" -vcodec h264 -video_size 1280x720 -framerate 30 -f rtsp -rtsp_transport tcp rtsp://sshop.tplinkdns.com:8554/mystream
