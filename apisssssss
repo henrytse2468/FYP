@@ -1,0 +1,8 @@
+http://sshop.tplinkdns.com:3380/getBooking.php 
+<-- get all booking data from table 'booking'
+
+http://sshop.tplinkdns.com:3380/getAvailableTimeslot.php 
+<-- get available timeslot from table 'test'
+
+http://sshop.tplinkdns.com:3380/insertBooking.php 
+<-- insert booking and update corresponding timeslot to 'occupied' (need to test the POST by java)
