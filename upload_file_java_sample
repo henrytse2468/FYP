@@ -1,0 +1,64 @@
+import java.io.InputStream;
+
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.Session;
+
+public class test{
+    public static void main(String[] args) {
+        final String hostname = "sshop.tplinkdns.com"; 
+        final String username = "ivetm"; 
+        final String password = "ilovetmit@123"; 
+        final String file = "LifeCycle.mp4"; 
+
+        try {
+            java.util.Properties config = new java.util.Properties(); 
+	    	config.put("StrictHostKeyChecking", "no");
+            JSch jsch = new JSch();
+            Session session = jsch.getSession(username, hostname, 3322);
+            session.setPassword(password);
+            session.setConfig(config);
+            session.connect();
+            System.out.println("connected");
+
+            Channel channel=session.openChannel("sftp");
+			ChannelSftp sftpChannel = (ChannelSftp) channel;
+			sftpChannel.connect();
+
+	        /* ((ChannelExec)channel).setCommand("ls -l");
+	        channel.setInputStream(null);
+	        ((ChannelExec)channel).setErrStream(System.err);
+	        
+	        InputStream in=channel.getInputStream(); */
+			sftpChannel.put(file, "LifeCycle.mp4");
+
+
+	        //channel.connect();
+	        /* byte[] tmp=new byte[1024];
+	        while(true){
+	          while(in.available()>0){
+	            int i=in.read(tmp, 0, 1024);
+	            if(i<0)break;
+	            System.out.print(new String(tmp, 0, i));
+	          }
+	          if(channel.isClosed()){
+	            System.out.println("exit-status: "+channel.getExitStatus());
+	            break;
+	          }
+	          try{Thread.sleep(1000);}catch(Exception ee){}
+	        } */
+
+
+	        sftpChannel.disconnect();
+	        session.disconnect();
+	        System.out.println("DONE");
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.out.println("not connected");
+			e.printStackTrace();
+        }        
+    }
+}
