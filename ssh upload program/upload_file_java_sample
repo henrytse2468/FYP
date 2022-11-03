@@ -7,13 +7,52 @@ import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
 
 public class test{
+	final static String hostname = "sshop.tplinkdns.com"; 
+	final static String username = "ivetm"; 
+	final static String password = "ilovetmit@123"; 
+	final static String file = "LifeCycle.mp4";  //for upload file
+	
     public static void main(String[] args) {
-        final String hostname = "sshop.tplinkdns.com"; 
-        final String username = "ivetm"; 
-        final String password = "ilovetmit@123"; 
-        final String file = "LifeCycle.mp4"; 
+    	// upload() or download()
+        download();
+    }
+    
+    static void download(){
+		try {
+			java.util.Properties config = new java.util.Properties(); 
+	    	config.put("StrictHostKeyChecking", "no");
+            JSch jsch = new JSch();
+            Session session = jsch.getSession(username, hostname, 3322);
+            session.setPassword(password);
+            session.setConfig(config);
+            session.connect();
+            System.out.println("connected");
 
-        try {
+            Channel channel=session.openChannel("sftp");
+			ChannelSftp sftpChannel = (ChannelSftp) channel;
+			sftpChannel.connect();
+			
+			sftpChannel.get("video.mp4", "video.mp4");
+
+
+			sftpChannel.disconnect();
+	        session.disconnect();
+	        System.out.println("DONE");
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("not connected");
+			e.printStackTrace();
+		}
+		
+	
+	
+		
+	
+		
+	}
+
+	static void upload(){
+		try {
             java.util.Properties config = new java.util.Properties(); 
 	    	config.put("StrictHostKeyChecking", "no");
             JSch jsch = new JSch();
@@ -59,6 +98,5 @@ public class test{
             // TODO: handle exception
             System.out.println("not connected");
 			e.printStackTrace();
-        }        
-    }
+        }  
 }
