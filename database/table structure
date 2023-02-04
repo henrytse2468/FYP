@@ -1,0 +1,27 @@
+database name: robotDogService
+
+tables:
+  Timeslots: 
+    start_time    start time of every period    number
+    end_time      end time of every period      number
+    availability  availability of the period    char
+    
+  Users
+    userID  unique ID of the user               VARCHAR (uuid)  pk
+    path    path to yaml file of face 
+            recognition data of user            VARCHAR
+    
+  Reservations
+    userID      unique ID of the user           VARCHAR (uuid) pk fk(user.userID)
+    start_time  start time of the reserved 
+                period                          number
+    start_point start location                  VARCHAR
+    destination end location                    VARCHAR
+    
+  Locations
+    room_num    room number of campus
+                e.g. 226, 231A/B, LRC           VARCHAR
+    
+    
+    
+    
