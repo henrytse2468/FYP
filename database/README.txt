@@ -1,1 +1,1 @@
-follow the the file to build database
+follow the file to build database
