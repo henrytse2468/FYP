@@ -1,0 +1,7 @@
+create database [IF NOT EXISTS] robotDogService;
+
+create table robotDogService.Timeslots(
+    start_time    char(8)   not null,
+    end_time      char(8)   not null,
+    availability  char(1)	not null);
+    
