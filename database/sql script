@@ -5,3 +5,24 @@ create table robotDogService.Timeslots(
     end_time      char(8)   not null,
     availability  char(1)	not null);
     
+create table robotDogService.Users(
+	userID	VARCHAR(50)		not null,
+    path	varchar(50)		not null,
+    
+    PRIMARY KEY (userID)
+);
+
+create table robotDogService.Reservations(
+	userID		VARCHAR(50)	not null,
+    start_time	char(8)		not null,
+    start_point	varchar(50)	not null,
+    destination	varchar(50)	not null,
+    
+    PRIMARY KEY (userID),
+    constraint fk_user foreign key (userID)
+		references Users(userID)
+        on delete cascade
+        on update cascade
+);
+
+    
