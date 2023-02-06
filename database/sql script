@@ -12,6 +12,12 @@ create table robotDogService.Users(
     PRIMARY KEY (userID)
 );
 
+create table robotDogService.Locations(
+	room_num	varchar(50)	not null,
+    
+    PRIMARY KEY (room_num)
+);
+
 create table robotDogService.Reservations(
 	userID		VARCHAR(50)	not null,
     start_time	char(8)		not null,
