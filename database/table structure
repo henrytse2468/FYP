@@ -4,7 +4,7 @@ tables:
   Timeslots: 
     start_time    start time of every period    number
     end_time      end time of every period      number
-    availability  availability of the period    char
+    availability  availability of the period    VARCHAR
     
   Users
     userID  unique ID of the user               VARCHAR (uuid)  pk
@@ -17,6 +17,7 @@ tables:
                 period                          number
     start_point start location                  VARCHAR
     destination end location                    VARCHAR
+   reserve_date reserved date                   date (YYYY-MM-DD)
     
   Locations
     room_num    room number of campus
