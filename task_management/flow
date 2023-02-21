@@ -2,7 +2,7 @@ dog status: free_to_use / reserved
 
 
 loop per 15 mins:
-  1. check the status/availability of arrived start time
+  1. check the status/availability of arrived period
   
     1.1 if this period is not available
           1.1.1 set dog status to 'reserved'
