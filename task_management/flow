@@ -1,0 +1,13 @@
+dog status: free_to_use / reserved
+
+
+loop per 15 mins:
+  1. check the status/availability of arrived start time
+  
+    1.1 if this period is not available
+          1.1.1 set dog status to 'reserved'
+          1.1.2 count the time to reserved time (e.g. booked 14:03:00, start count on 14:00:00)
+          
+    1.2 else set dog status to 'free_to_use'
+  
+  2. set the availability of previous period to 'finished'
