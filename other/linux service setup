@@ -1,0 +1,28 @@
+
+
+1. sudo nano /etc/systemd/system/YOUR_SERVICE_NAME.service   // reset_timeslots
+
+2. paste this script:
+"
+    Description=GIVE_YOUR_SERVICE_A_DESCRIPTION
+
+    Wants=network.target
+    After=syslog.target network-online.target
+
+    [Service]
+    Type=simple
+    ExecStart=YOUR_COMMAND_HERE  // dont use ''  <- delete the comment when pasting
+    Restart=on-failure
+    RestartSec=10
+    KillMode=process
+
+    [Install]
+    WantedBy=multi-user.target
+"
+
+3.  sudo systemctl daemon-reload
+4.  sudo systemctl enable reset_timeslots
+5.  sudo systemctl start reset_timeslots
+6.  systemctl status reset_timeslots.service
+
+
