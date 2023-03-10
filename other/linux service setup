@@ -25,4 +25,6 @@
 5.  sudo systemctl start reset_timeslots
 6.  systemctl status reset_timeslots.service
 
+7.  journalctl -u reset_timeslots.service
+
 
