@@ -28,3 +28,13 @@
 7.  journalctl -u reset_timeslots.service
 
 
+*** if the service will stop working after several hours *************
+Systems user services by default only run as long as there is at least 
+one session active for the user. When a user logs out from the last (or only) 
+session, the systemd --user instance for that user is killed. 
+You can change this by enabling lingering of systemd user instances. 
+This is done per user using the following command: loginctl enable-linger *username*. 
+When lingering is enabled, the user services are started at boot, and continue to run
+even if there is no active session for the user.
+************************************************************************
+
