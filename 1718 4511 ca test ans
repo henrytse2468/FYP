@@ -1,0 +1,83 @@
+1.  (a) 
+   
+        (i)
+
+        <%!
+            public static String[] getAllMedals(){
+                String[] medals = {"img/Gold.png", "img/Silver.png", "img/Bronze.png"};
+                return medals;
+            }
+        %>
+    
+
+
+    (b)
+        (i)
+
+        <jsp:include page="medalDB.jsp" />
+
+        (ii)
+
+        <%
+            String[] medals = getAllMedals();
+            for(int i=0; i < medals.length; i++){
+                out.print("<tr><th>");
+                out.print("<img src='" + medals[i] + "' />");
+                out.print("</th></tr>");
+            }
+        %>
+
+        (iii)
+
+        <form action="q1Handler.jsp" method="get">
+            Mark
+            <input type="number" name="mark" min="50" max="100" />
+            <input type="submit" value="Check Medal" />
+        
+        
+        </form>
+
+        
+    (c)
+            (i)
+            input = request.getParameter("mark");
+
+            (ii)
+            if(input.matches("")){
+                out.print("You did not submit any value!!");
+            }
+
+            (iii)
+            else {
+                mark = Integer.parseInt(input);
+            }
+
+            String[] medals = getAllMedals();
+            String medal = "";
+            if(mark >= 75)
+                medal = medals[0];
+            if(mark >= 60 && mark <= 74)
+                medal = medals[1];
+            if(mark >= 50 && mark <= 59)
+                medal = medals[2];
+
+            out.print("<img src='" + medal + "' />");
+
+            (iv)
+            <%=mark%>
+
+            (v)
+            <a href="q1.jsp"> Try Again </a>
+
+            (vi)
+            <%page errorPage="handleError.jsp" />
+
+
+2.  (a)
+        <h1> Check Product Info </h1>
+        
+        <form action="productInfo" method="post" >
+            p1
+            <input type="checkbox" name=
+
+        </form>
