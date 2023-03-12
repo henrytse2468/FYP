@@ -119,10 +119,10 @@
 
     (c)
         (i)
-        @WebServlet(name="ProductController", path={"/productInfo"})
+        @WebServlet(name="ProductController", urlPatterns={"/productInfo"})
 
         (ii)
-        implements xxx
+        extends HttpServlet
 
         (iii)
         doPost
@@ -138,12 +138,23 @@
             out.print("No selection is made. <br/>");
             out.print("<a href='enquiry.jsp'>Try Again.</a> ");
         } else{
-            ProductDB db = new ProductDB();
-            db.add()
+            for (i=0; i < codes.length ; i++){
+                Product p = getProductByCode(codes[i]);
+                out.println("Code:" + p.getCode()+"<br/>");
+                out.println("Desc:" + p.getDesc()+"<br/>");
+                out.println("Price": + p.getPrice()+"<br/>");
+                out.println("<hr/>");
+            }
         }
 
 3.  (a)
-        doGet, doPost, processXXX
+        // default constructor()
+        init(): create an instance of Servlet class
+        service(): handle request with doXXX() methods
+        destroy(): destroy the Servlet and tidy up the resources
 
     (b)
-        page, request, response, ???
+        page: page scope of one jsp are not accessible to other jsps
+        request: all jsps, and servlets that share a request, share the request scope
+        session: all requests from the same user are in the same session, each user has his own session
+        application: all users share the same values of the application scope, therefore all users can see changes made by other users
