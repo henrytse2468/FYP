@@ -1,0 +1,74 @@
+1.  (a)
+
+        <p>Student No: <input type="text" name="stuno" /> </p>
+        <br/>
+        <p>Apply Course:</p>
+        <p> 
+            <input type="checkbox" name="course" value="COMP1001" /> 
+            COMP1001 - Python Basic
+        </p>
+        <p> 
+            <input type="checkbox" name="course" value="COMP1002" /> 
+            COMP1002 - Fun with Java
+        </p>
+        <p> 
+            <input type="checkbox" name="course" value="COMP1003" /> 
+            COMP1003 - C# Fundamental
+        </p>
+
+        <p>
+            Payment Method:
+            <select name="payment" >
+                <option value="Cash">Cash</option>
+                <option value="Visa">Visa</option>
+                <option value="Fps">FPS</option>
+            </select>
+        </p>
+
+        <p><input type="submit" value="Submit" /> </p>
+
+    (b)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+            PrintWriter out = response.getWriter();
+            // setContentType("text/html");
+            out.print("<h1>Accepted Application</h1>");
+            out.print("<table border='1'>");
+            out.print("<tr>");
+            out.print("<th>Student No</th>");
+            out.print("<th>Course</th>");
+            out.print("<th>Payment Method</th>");
+            out.print("</tr>");
+            out.print("<tr>");
+            out.print("<td>"+ request.getParameter("stuno") +"</td>");
+            String[] courses = request.getParameterValues("course");
+            for(String course:courses){
+                out.print("<td>"+ course +"</td>");
+            }
+            out.print("<td>"+ request.getParameter("payment") +"</td>");
+            out.print("</tr>");
+            out.print("</table>");
+            out.print("Total Amount: "+ courses.length*1000);
+        }
+
+
+2.  (a)
+        <%page errorPage="handleException.jsp" %>
+
+    (b)
+        <jsp:>
+
+    (c)
+        
+
+    (d)
+        <% 
+            Date date = new Date();
+        %>
+
+    (e)
+        run one time / run everytime
+
+    (f)
+        html with java code
+
+    

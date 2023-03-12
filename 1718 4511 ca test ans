@@ -77,7 +77,73 @@
         <h1> Check Product Info </h1>
         
         <form action="productInfo" method="post" >
+        <p>
             p1
-            <input type="checkbox" name=
+            <input type="checkbox" name="code" value="p1" />
+            p2
+            <input type="checkbox" name="code" value="p2" />
+            p3
+            <input type="checkbox" name="code" value="p3" />
+        </p>
 
+        <p>
+        <input type="submit" value="submit" />
+        <input type="reset" value="reset" />
+        </p>
         </form>
+
+    (b)
+        private String code, desc;
+        private double price;
+
+        public Product(){}
+
+        public void setCode(String code){
+            this.code = code;
+        }
+        public void setDesc(String desc){
+            this.desc = desc;
+        }
+        public void setPrice(double price){
+            this.price = price;
+        }
+        public String getCode(){
+            return this.code;
+        }
+        public String getDesc(){
+            return this.desc;
+        }
+        public double getPrice(){
+            return this.price;
+        }
+
+    (c)
+        (i)
+        @WebServlet(name="ProductController", path={"/productInfo"})
+
+        (ii)
+        implements xxx
+
+        (iii)
+        doPost
+
+        (iv)
+        out = response.getWriter();
+
+        (v)
+        codes = request.getParameterValues("code");
+
+        (vi)
+        if(codes.length == 0){
+            out.print("No selection is made. <br/>");
+            out.print("<a href='enquiry.jsp'>Try Again.</a> ");
+        } else{
+            ProductDB db = new ProductDB();
+            db.add()
+        }
+
+3.  (a)
+        doGet, doPost, processXXX
+
+    (b)
+        page, request, response, ???
