@@ -6,3 +6,7 @@ follow the file to build database
 SET SQL_SAFE_UPDATES = 0;
 
 run 'SET SQL_SAFE_UPDATES = 1;' when the modify is finished
+
+
+change root user password and require password:
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'test';
